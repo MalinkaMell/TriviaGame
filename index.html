@@ -10,9 +10,33 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lancelot|PT+Serif&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg d-flex justify-content-end text-center flex-column">
+    <h1 class="harry-potter-font display-1 logo">Harry Potter Trivia</h1>
+    <div class="container mt-3 pt-3 game-panel text-center d-flex flex-column">
+        <div class="p-3 align-self-center question-div">
+            <h2 class="question">In the books, where did we see Severus Snape for the first time?</h2>
+        </div>
+        <div class="text-left margin-center answers">
+            <div class="p-2 align-self-center ">
+                <input class="form-check-input text-left" type="radio" name="answer" id="answer1"
+                    value="In the Great Hall">
+                <label class="form-check-label" for="answer1"> In the Great Hall</label></div>
+            <div class="p-2 align-self-center  text-left">
+                <input class="form-check-input" type="radio" name="answer" id="answer2" value="In a Hogward Corridor">
+                <label class="form-check-label" for="answer2"> In a Hogward Corridor</label></div>
+            <div class="p-2 align-self-center">
+                <input class="form-check-input" type="radio" name="answer" id="answer3" value="In Potions Classroom">
+                <label class="form-check-label" for="answer3"> In Potions Classroom</label></div>
+            <div class="p-2 align-self-center">
+                <input class="form-check-input" type="radio" name="answer" id="answer4" value="On Hogwards Express">
+                <label class="form-check-label" for="answer4"> On Hogwards Express</label></div>
+        </div>
+        <div id="timer" class="pt-3"><strong>Time remaining: 7 seconds</strong></div>
+    </div>
+    <footer class="p-3"></footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
