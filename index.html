@@ -16,9 +16,26 @@
 <body class="bg d-flex justify-content-end text-center flex-column">
     <h1 class="harry-potter-font display-1 logo">Harry Potter Trivia</h1>
     <div class="container mt-3 pt-3 game-panel text-center d-flex flex-column">
+
+        <!--Displaying question, hiding when showing right answer-->
         <div class="p-3 align-self-center question-div">
             <h2 class="question">In the books, where did we see Severus Snape for the first time?</h2>
         </div>
+        <!--Showing correct/incorrect, hiding when showing question-->
+        <div class="p-3 align-self-center question-div" style="display: none">
+            <h2 class="question" id="incorrect_answer" style="display: none">
+                <span id="incorrect">Incorrect!</span>
+                <br>
+                <span id="right_answer">It was: The Great Hall</span>
+            </h2>
+            <h2 class="question">
+                <span id="correct">That's correct!</span>
+                <br>
+                <span id="correct_answer">The Great Hall</span>
+            </h2>
+        </div>
+
+        <!-- Displaying answers options, hiding when showing answer-->
         <div class="text-left margin-center answers">
             <div class="p-2 align-self-center ">
                 <input class="form-check-input text-left" type="radio" name="answer" id="answer1"
@@ -34,8 +51,17 @@
                 <input class="form-check-input" type="radio" name="answer" id="answer4" value="On Hogwards Express">
                 <label class="form-check-label" for="answer4"> On Hogwards Express</label></div>
         </div>
+        <!-- Displaying answer, hiding when showing options-->
+        <div class="text-center margin-center answers" style="display: none">
+            <div class="p-2 align-self-center">
+                <img src="assets/images/gifs/ariana.gif" alt="The Great Hall">
+            </div>
+        </div>
+
+
         <div id="timer" class="pt-3"><strong>Time remaining: 7 seconds</strong></div>
     </div>
+
     <footer class="p-3"></footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
