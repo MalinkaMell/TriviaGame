@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 //declaring reusable class object in order to reuse it and create as many questions as i want instead of creatiing directly an array and modify it every time
 class questionObject {
     constructor(question, answerOptions, rightAnswer, imgFile) {
@@ -66,9 +68,9 @@ arrayOfQuestions.push(questionSix);
 
 //question 7: declaring and pushing
 const questionSeven = new questionObject(
-    "In the Harry Potter books, which character speaks Voldemort’s name for the first time?",
-    ["Albus Dumledore", "Rubeus Hagrid", "Severus Snape", "Ronald Wisley"],
-    "Albus Dumledore",
+    "What did Voldemort say was the most powerfully magical number?",
+    ["7", "666", "13", "3"],
+    "7",
     "voldemort.gif"
 );
 arrayOfQuestions.push(questionSeven);
@@ -100,14 +102,85 @@ const questionTen = new questionObject(
 );
 arrayOfQuestions.push(questionTen);
 
-let startGame = () => {
-    
+//setting question number to 0
+let questionNumber = 0;
+
+//function for shufling arrays
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  }
+
+
+let showRightAnswerWindow = () => {
+    $("#questionDiv").attr("style", "display:none");
+    $("#answers_div").attr("style", "display:none");
+    $("#rightAnswerDiv").attr("style", "display:block");
+    $("#correct").attr("style", "display:block");
+    $("#correct_answer").attr("style", "display:block");
+    $("#img_div").attr("style", "display:block");
+    $("#div_correct_answer").attr("style", "display:block");
+    $("#correct").text("That's correct!");
+};
+
+let showWrongAnswerWindow = () => {
+    $("#questionDiv").attr("style", "display:none");
+    $("#answers_div").attr("style", "display:none");
+    $("#rightAnswerDiv").attr("style", "display:block");
+    $("#correct").attr("style", "display:block");
+    $("#correct_answer").attr("style", "display:block");
+    $("#img_div").attr("style", "display:block");
+    $("#div_incorrect_answer").attr("style", "display:block");
+    $("#correct").text("Incorrect!");
 }
-      
-      console.log(questionOne.answerOptions[0])
-     // console.log(questionTwo.rightAnswer)
-      console.log(arrayOfQuestions)
-     //   console.log(arrayOfQuestions[0].question)
+
+
+//start game function
+let startGame = (param) => {
+
+    //shuffling the questions array so they don't show in the same order every time
+    shuffle(arrayOfQuestions);
+
+    //shuffling the answers array so they don't show in the same order every time
+    shuffle(param[questionNumber].answerOptions);
+
+    //appending questions and answers to html
+    $("#question").text(param[questionNumber].question);
+    $("#answer1").val(param[questionNumber].answerOptions[0]);
+    $("#answer2").val(param[questionNumber].answerOptions[1]);
+    $("#answer3").val(param[questionNumber].answerOptions[2]);
+    $("#answer4").val(param[questionNumber].answerOptions[3]);
+    $("#label_1").text(param[questionNumber].answerOptions[0]);
+    $("#label_2").text(param[questionNumber].answerOptions[1]);
+    $("#label_3").text(param[questionNumber].answerOptions[2]);
+    $("#label_4").text(param[questionNumber].answerOptions[3]);
+    
+    //checking the value of clicked radio
+    $("input[type='radio']").click(function(){
+        let radioValue = $("input[name='answer']:checked").val();
+        if(radioValue === param[questionNumber].rightAnswer){
+            $("#correct_answer").text(param[questionNumber].rightAnswer);
+            $("#image_file").attr("src", "assets/images/gifs/" + param[questionNumber].imgFile);
+            console.log("Right Answer! " + radioValue);
+            questionNumber++;
+            console.log(questionNumber);
+            showRightAnswerWindow();
+        }
+        else {
+            $("#right_answer").text("It was: " + param[questionNumber].rightAnswer);
+            $("#image_file").attr("src", "assets/images/gifs/" + param[questionNumber].imgFile);
+            questionNumber++;
+            showWrongAnswerWindow();
+        }
+        
+        
+    }); 
+
+
+}
 
 
 
+    
+startGame(arrayOfQuestions)
+
+})

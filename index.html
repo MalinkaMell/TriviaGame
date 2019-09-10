@@ -18,43 +18,40 @@
     <div class="container mt-3 pt-3 game-panel text-center d-flex flex-column">
 
         <!--Displaying question, hiding when showing right answer-->
-        <div class="p-3 align-self-center question-div">
-            <h2 class="question">In the books, where did we see Severus Snape for the first time?</h2>
+        <div class="p-3 align-self-center question-div" id="questionDiv">
+            <h2 class="question"><span id="question"></span></h2>
         </div>
         <!--Showing correct/incorrect, hiding when showing question-->
-        <div class="p-3 align-self-center question-div" style="display: none">
-            <h2 class="question" id="incorrect_answer" style="display: none">
+        <div class="p-3 align-self-center question-div" id="rightAnswerDiv" style="display: none">
+            <h2 class="question" id="div_incorrect_answer" style="display: none">
                 <span id="incorrect">Incorrect!</span>
-                <br>
                 <span id="right_answer">It was: The Great Hall</span>
             </h2>
-            <h2 class="question">
-                <span id="correct">That's correct!</span>
-                <br>
-                <span id="correct_answer">The Great Hall</span>
+            <h2 class="question" id="div_correct_answer" style="display: none">
+                <span id="correct"></span>
+                <span id="correct_answer"></span>
             </h2>
         </div>
 
         <!-- Displaying answers options, hiding when showing answer-->
-        <div class="text-left margin-center answers">
+        <div class="text-left margin-center answers" id="answers_div">
             <div class="p-2 align-self-center ">
-                <input class="form-check-input text-left" type="radio" name="answer" id="answer1"
-                    value="In the Great Hall">
-                <label class="form-check-label" for="answer1"> In the Great Hall</label></div>
+                <input class="form-check-input text-left" type="radio" name="answer" id="answer1" value="">
+                <label class="form-check-label" for="answer1"><span id="label_1"></span></label></div>
             <div class="p-2 align-self-center  text-left">
-                <input class="form-check-input" type="radio" name="answer" id="answer2" value="In a Hogward Corridor">
-                <label class="form-check-label" for="answer2"> In a Hogward Corridor</label></div>
+                <input class="form-check-input" type="radio" name="answer" id="answer2" value="">
+                <label class="form-check-label" for="answer2"><span id="label_2"></span></label></div>
             <div class="p-2 align-self-center">
                 <input class="form-check-input" type="radio" name="answer" id="answer3" value="In Potions Classroom">
-                <label class="form-check-label" for="answer3"> In Potions Classroom</label></div>
+                <label class="form-check-label" for="answer3"><span id="label_3"></span></label></div>
             <div class="p-2 align-self-center">
                 <input class="form-check-input" type="radio" name="answer" id="answer4" value="On Hogwards Express">
-                <label class="form-check-label" for="answer4"> On Hogwards Express</label></div>
+                <label class="form-check-label" for="answer4"><span id="label_4"></span></label></div>
         </div>
         <!-- Displaying answer, hiding when showing options-->
-        <div class="text-center margin-center answers" style="display: none">
+        <div class="text-center margin-center answers" id="img_div" style="display: none">
             <div class="p-2 align-self-center">
-                <img src="assets/images/gifs/ariana.gif" alt="The Great Hall">
+                <img src="assets/images/gifs/ariana.gif" alt="The Great Hall" id="image_file">
             </div>
         </div>
 
