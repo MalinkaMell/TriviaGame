@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    //-----------------------ARRAY OF QUESTIONS BLOCK ---------------------------------//
+
     //declaring reusable class object in order to reuse it and create as many questions as i want instead of creatiing directly an array and modify it every time
     class questionObject {
         constructor(question, answerOptions, rightAnswer, imgFile) {
@@ -12,6 +14,15 @@ $(document).ready(function () {
 
     //declaring an array and going to push here newly created questions 
     let arrayOfQuestions = [];
+
+    //question 0: declaring and pushing
+    const questionZero = new questionObject(
+        "Which creatures pull the school carriages at Hogwarts?",
+        ["Hippogriffs", "Thestrals", "Centaurus", "Manticores"],
+        "Thestrals",
+        "thestrals.gif"
+    );
+    arrayOfQuestions.push(questionZero);
 
     //question 1: declaring and pushing
     const questionOne = new questionObject(
@@ -79,7 +90,7 @@ $(document).ready(function () {
     //question 8: declaring and pushing
     const questionEight = new questionObject(
         "Which book did Hagrid assign to his Care of Magical Creatures class?",
-        ["The Monster Book of Monsters", "Fantastic Beasts and Where To Find Them", "Fowl or Foul?: A Study of Hippogriff Brutality", "Hairy Snout, Human Heart"],
+        ["The Monster Book of Monsters", "Fantastic Beasts and Where To Find Them", "The Tales of Beedle the Bard", "Hairy Snout, Human Heart"],
         "The Monster Book of Monsters",
         "monter_book.gif"
     );
@@ -103,6 +114,11 @@ $(document).ready(function () {
     );
     arrayOfQuestions.push(questionTen);
 
+
+    //-----------------------END OF ARRAY OF QUESTIONS BLOCK ---------------------------------//
+
+    //-----------------------GLOBAL VARIABLES BLOCK ---------------------------------//
+
     //setting question number to 0
     let questionNumber = 0;
     //switch for next question
@@ -113,16 +129,17 @@ $(document).ready(function () {
     let wrongAnswers = 0;
     //non answers
     let noAnswers = 0;
-
-    //Timer functionality
-
-
     //  Variable that will hold our setInterval that runs the stopwatch
     let intervalId;
-
     // prevents the clock from being sped up unnecessarily
     let clockRunning = false;
     let time = 15;
+
+    //-----------------------END OF GLOBAL VARIABLES BLOCK ---------------------------------//
+
+    //-----------------------FUNCTIONS BLOCK ---------------------------------//
+
+    //---------Timer functions------------//
 
     function timerStop() {
         clearInterval(intervalId);
@@ -140,7 +157,14 @@ $(document).ready(function () {
     function timerCount() {
         if (time > 0) {
             time--;
-            let displayTime = "0" + time;
+            let displayTime;
+            if (time < 10) {
+                displayTime = "0" + time;
+            }
+            else {
+                displayTime = time;
+            }
+
             $("#timer").html(`Time remaining: ${displayTime}`);
         }
         if (time === 0) {
@@ -159,10 +183,12 @@ $(document).ready(function () {
         }
     }
 
-    //function for shufling array
+    //---------Function for shufling array------------//
     function shuffle(array) {
         array.sort(() => Math.random() - 0.5);
     }
+
+    //---------Windows other than main game window------------//
     //reset game interface
     let resetWindow = () => {
         $("#questionDiv").show();
@@ -201,10 +227,10 @@ $(document).ready(function () {
 
     }
 
-
-    //start game function
+    //---------Start game function------------//
 
     let createGameInterface = () => {
+
         $(".restart-button").hide();
         $(".start-button").hide();
         if (questionNumber < arrayOfQuestions.length) {
@@ -221,12 +247,12 @@ $(document).ready(function () {
                 $('#answers_div').append($(`<button class="answer">${key}</button>`));
             })
             //timerReset();
-            time = 10;
+            time = 15;
             timerStart();
             console.log(arrayOfQuestions[questionNumber].question)
 
         }
-        //if no more question show game over window
+        //if no more question reset timer and show game over window
         if (questionNumber === arrayOfQuestions.length - 1) {
             timerStop();
             time = 0;
@@ -236,7 +262,10 @@ $(document).ready(function () {
 
     }
 
+    //-----------------------END OF FUNCTIONS BLOCK ---------------------------------//
 
+    //-----------------------JQUERY ON CLICK EVENTS ---------------------------------//
+    //click on answer button
     $("body").on("click", ".answer", function () {
 
         let rightAnswer = arrayOfQuestions[questionNumber].rightAnswer;
@@ -266,20 +295,47 @@ $(document).ready(function () {
         }
     });
 
+    //click on restart game button
     $("body").on("click", ".restart-button", function () {
         questionSwitch = false;
         questionNumber = 0;
+        rightAnswers = 0;
+        noAnswers = 0;
+        wrongAnswers = 0;
         resetWindow();
 
     });
 
+    //click on start game button
     $("body").on("click", ".start-button", function () {
+
         questionSwitch = false;
         questionNumber = 0;
+        rightAnswers = 0;
+        noAnswers = 0;
+        wrongAnswers = 0;
         resetWindow();
 
     });
 
-    //createGameInterface();
 
 })
+//
+/* 
+window.onload = function() {
+    //background music 
+    let playMusic = function () {
+        return new Promise(function (resolve, reject) {
+            let audio = new Audio("./assets/audio/Harry_Potter_Theme_Song.mp3");
+            audio.volume = 0.5;
+            audio.preload = "auto";// intend to play through
+            audio.autoplay = true;// autoplay when loaded
+            audio.onerror = reject;// on error, reject
+            audio.onended = resolve;// when done, resolve
+        })
+
+    }
+    playMusic().then(function () {
+        console.log("risolto?")
+    })
+} */
