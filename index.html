@@ -24,29 +24,20 @@
         <!--Showing correct/incorrect, hiding when showing question-->
         <div class="p-3 align-self-center question-div" id="rightAnswerDiv" style="display: none">
             <h2 class="question" id="div_incorrect_answer" style="display: none">
-                <span id="incorrect">Incorrect!</span>
-                <span id="right_answer">It was: The Great Hall</span>
+                <span id="incorrect"></span>
+                <span id="right_answer"></span>
             </h2>
-            <h2 class="question" id="div_correct_answer" style="display: none">
-                <span id="correct"></span>
-                <span id="correct_answer"></span>
-            </h2>
+            <h2 class="question" id="div_correct_answer" style="display: none"></h2>
         </div>
 
         <!-- Displaying answers options, hiding when showing answer-->
-        <div class="text-left margin-center answers" id="answers_div">
-            <div class="p-2 align-self-center ">
-                <input class="form-check-input text-left" type="radio" name="answer" id="answer1" value="">
-                <label class="form-check-label" for="answer1"><span id="label_1"></span></label></div>
-            <div class="p-2 align-self-center  text-left">
-                <input class="form-check-input" type="radio" name="answer" id="answer2" value="">
-                <label class="form-check-label" for="answer2"><span id="label_2"></span></label></div>
-            <div class="p-2 align-self-center">
-                <input class="form-check-input" type="radio" name="answer" id="answer3" value="In Potions Classroom">
-                <label class="form-check-label" for="answer3"><span id="label_3"></span></label></div>
-            <div class="p-2 align-self-center">
-                <input class="form-check-input" type="radio" name="answer" id="answer4" value="On Hogwards Express">
-                <label class="form-check-label" for="answer4"><span id="label_4"></span></label></div>
+        <div class="text-center margin-center answers" id="answers_div">
+            <div id="start-game">
+                <h1>How well do you know Harry Potter world?</h1>
+                <p>From spells to ghosts, potions to professors, wands to witches, discover just how much you know about
+                    the beloved wizarding world!</p>
+
+            </div>
         </div>
         <!-- Displaying answer, hiding when showing options-->
         <div class="text-center margin-center answers" id="img_div" style="display: none">
@@ -56,7 +47,8 @@
         </div>
 
 
-        <div id="timer" class="pt-3"><strong>Time remaining: 7 seconds</strong></div>
+        <div id="timer" class="pt-3 font-weight-bold"><button class="start-button image-button">Start Game!</button>
+        </div>
     </div>
 
     <footer class="p-3"></footer>
