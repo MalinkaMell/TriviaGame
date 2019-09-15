@@ -227,6 +227,20 @@ $(document).ready(function () {
 
     }
 
+    //background music function 
+    let playMusic = function () {
+        return new Promise(function (resolve, reject) {
+            let audio = new Audio("./assets/audio/Harry_Potter_Theme_Song.mp3");
+            audio.volume = 0.5;
+            audio.preload = "auto";// intend to play through
+            audio.autoplay = true;// autoplay when loaded
+            audio.onerror = reject;// on error, reject
+            audio.onended = resolve;// when done, resolve
+        })
+
+    }
+    
+
     //---------Start game function------------//
 
     let createGameInterface = () => {
@@ -308,7 +322,9 @@ $(document).ready(function () {
 
     //click on start game button
     $("body").on("click", ".start-button", function () {
-
+        playMusic().then(function () {
+            console.log("risolto?")
+        })
         questionSwitch = false;
         questionNumber = 0;
         rightAnswers = 0;
@@ -320,22 +336,3 @@ $(document).ready(function () {
 
 
 })
-//
-/* 
-window.onload = function() {
-    //background music 
-    let playMusic = function () {
-        return new Promise(function (resolve, reject) {
-            let audio = new Audio("./assets/audio/Harry_Potter_Theme_Song.mp3");
-            audio.volume = 0.5;
-            audio.preload = "auto";// intend to play through
-            audio.autoplay = true;// autoplay when loaded
-            audio.onerror = reject;// on error, reject
-            audio.onended = resolve;// when done, resolve
-        })
-
-    }
-    playMusic().then(function () {
-        console.log("risolto?")
-    })
-} */
