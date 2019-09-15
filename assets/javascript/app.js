@@ -2,13 +2,17 @@ $(document).ready(function () {
 
     //-----------------------ARRAY OF QUESTIONS BLOCK ---------------------------------//
 
-    //declaring reusable class object in order to reuse it and create as many questions as i want instead of creatiing directly an array and modify it every time
+    /*
+        declaring reusable class object in order to reuse it and create questions outside
+        instead of creatiing directly an array and modify it every time
+        let's see how it works, gonna try some new syntax here too
+    */
     class questionObject {
         constructor(question, answerOptions, rightAnswer, imgFile) {
-            this.question = question,
-                this.answerOptions = answerOptions,
-                this.rightAnswer = rightAnswer,
-                this.imgFile = imgFile
+            this.question = question, //question
+            this.answerOptions = answerOptions, // this is going to be an array
+            this.rightAnswer = rightAnswer, // right answer
+            this.imgFile = imgFile // image
         }
     }
 
@@ -141,10 +145,10 @@ $(document).ready(function () {
 
     //---------Timer functions------------//
 
+    //well... here readapted code we used in class to create stopwatch
     function timerStop() {
         clearInterval(intervalId);
         clockRunning = false;
-        console.log("stopping")
     }
 
     function timerStart() {
@@ -164,7 +168,6 @@ $(document).ready(function () {
             else {
                 displayTime = time;
             }
-
             $("#timer").html(`Time remaining: ${displayTime}`);
         }
         if (time === 0) {
@@ -178,19 +181,27 @@ $(document).ready(function () {
             $("#answers_div").html(`<h4> ${theAnswer}</h4>`);
             $("#image_file").attr("src", `assets/images/gifs/${image}`);
             questionSwitch = true;
-            noAnswers++;
+            noAnswers++; //increasing unanswered count 
             showAnswerWindow();
         }
     }
 
     //---------Function for shufling array------------//
+
+    /*
+    i'd like to go trough this with TS or Danyal.. 
+    if I use this for an little array, like answers, which is only 4 it works fine, 
+    but if I use it on bigger, like array of questions, it somethimes repeating the same element. 
+    is there a better way to shuffle an array? */
+    
     function shuffle(array) {
-        array.sort(() => Math.random() - 0.5);
+        array.sort(() => Math.random() - 0.5); 
     }
 
     //---------Windows other than main game window------------//
     //reset game interface
     let resetWindow = () => {
+        //showing all the neccesary and hiding all the unnessesary
         $("#questionDiv").show();
         $("#answers_div").show();
         $("#answers_div").html("");
@@ -200,38 +211,36 @@ $(document).ready(function () {
     }
     //showing right answer
     let showAnswerWindow = () => {
+        //showing all the neccesary and hiding all the unnessesary
         $(".answer").remove();
         $("#questionDiv").hide();
         $("#rightAnswerDiv").show();
         $("#img_div").show();
+        //3 seconds timeout before showing the next question
         setTimeout(function () {
-            console.log("waiting 3 seconds")
+            console.log("waiting 3 seconds");
             resetWindow();
         }, 3000)
     }
     //game over, restart window
     let restartWindow = () => {
-
-
-
-        timerStop();
-        time = 0;
-        $("#timer").html(`<button class="restart-button font-weight-bold image-button">Restart</button>`);
-        $("#question").html("");
+        timerStop(); //stop timer
+        time = 0; //set it to 0
+        $("#timer").html(`<button class="restart-button font-weight-bold image-button">Restart</button>`); //creating restart button - gonna use the same div as timer, it looks good there
+        $("#question").html(""); //emtying question div
         $('#answers_div').html(`
         <h2>Game Over!</h2>
         <p>Right answers: <strong>${rightAnswers}</strong> </p>
         <p>Wrong answers: <strong>${wrongAnswers}</strong></p>
         <p>Unanswered questions: <strong>${noAnswers}</strong></p>
-        `);
-
+        `); //showing stats for the game session
     }
 
     //background music function 
     let playMusic = function () {
         return new Promise(function (resolve, reject) {
             let audio = new Audio("./assets/audio/Harry_Potter_Theme_Song.mp3");
-            audio.volume = 0.5;
+            audio.volume = 0.2; //setting volume low so it's not bugging the user (hopefuly)
             audio.preload = "auto";// intend to play through
             audio.autoplay = true;// autoplay when loaded
             audio.onerror = reject;// on error, reject
@@ -239,14 +248,15 @@ $(document).ready(function () {
         })
 
     }
-    
 
     //---------Start game function------------//
 
     let createGameInterface = () => {
-
-        $(".restart-button").hide();
+        //hiding buttons
+        $(".restart-button").hide(); 
         $(".start-button").hide();
+
+        //if we have more questions 
         if (questionNumber < arrayOfQuestions.length) {
             if (questionSwitch === true) {
                 questionNumber++;
@@ -260,11 +270,8 @@ $(document).ready(function () {
             $.each(arrayOfQuestions[questionNumber].answerOptions, function (index, key) {
                 $('#answers_div').append($(`<button class="answer">${key}</button>`));
             })
-            //timerReset();
-            time = 15;
+            time = 15; //setting timer to 15 seconds
             timerStart();
-            console.log(arrayOfQuestions[questionNumber].question)
-
         }
         //if no more question reset timer and show game over window
         if (questionNumber === arrayOfQuestions.length - 1) {
@@ -282,8 +289,9 @@ $(document).ready(function () {
     //click on answer button
     $("body").on("click", ".answer", function () {
 
-        let rightAnswer = arrayOfQuestions[questionNumber].rightAnswer;
-        if ($(this).text() === rightAnswer) {
+        let rightAnswer = arrayOfQuestions[questionNumber].rightAnswer; // just because its too long
+        //still don't feel very comfortable with "this", should ask TS to explain it to me again ^_^
+        if ($(this).text() === rightAnswer) { 
             timerStop();
             time = 0;
             $("#timer").text("");
@@ -292,7 +300,7 @@ $(document).ready(function () {
             $("#answers_div").html(`<h4 class="font-weight-bold">${rightAnswer}</h4>`);
             $("#image_file").attr("src", `assets/images/gifs/${arrayOfQuestions[questionNumber].imgFile}`);
             questionSwitch = true;
-            rightAnswers++;
+            rightAnswers++; //increasing right answers count
             showAnswerWindow();
         }
         else {
@@ -304,7 +312,7 @@ $(document).ready(function () {
             $("#answers_div").html(`<h4> ${rightAnswer}</h4>`);
             $("#image_file").attr("src", `assets/images/gifs/${arrayOfQuestions[questionNumber].imgFile}`);
             questionSwitch = true;
-            wrongAnswers++;
+            wrongAnswers++; //increasing wrong answers count
             showAnswerWindow();
         }
     });
@@ -315,7 +323,7 @@ $(document).ready(function () {
         questionNumber = 0;
         rightAnswers = 0;
         noAnswers = 0;
-        wrongAnswers = 0;
+        wrongAnswers = 0; 
         resetWindow();
 
     });
