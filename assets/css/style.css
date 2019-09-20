@@ -78,28 +78,6 @@ body, html {
     height: 426px;
 }
 
-input[type=radio] {
-    width: 28px;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-}
-
-input[type=radio]:not(old) + label {
-    display: inline-block;
-    margin-left: 0px;
-    padding-left: 28px;
-    background: url('../images/radio.png') no-repeat 0 0;
-    line-height: 24px;
-}
-
-input[type=radio]:hover + label {
-    background-position : 0 -24px;
-}
-  
-input[type=radio]:checked + label {
-    background-position : 0 -48px;
-}
 
 .margin-center {
     margin: 0 auto;
@@ -136,4 +114,13 @@ input[type=radio]:checked + label {
 
 .image-button:hover {
     background: transparent url(../images/btn-hover.png) center center no-repeat;
+}
+
+@media screen and (max-width: 640px) {
+    .game-panel {
+        background: #806A00 url(../images/game-panel.jpg) center center no-repeat;
+        width: 100%;
+        padding-bottom:40px;
+    }
+   
 }
