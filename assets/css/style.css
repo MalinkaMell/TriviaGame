@@ -118,7 +118,7 @@ body, html {
 
 @media screen and (max-width: 640px) {
     .game-panel {
-        background: #806A00 url(../images/game-panel.jpg) center center no-repeat;
+        background: #806A00 url(../images/paper.jpg) center center repeat;
         width: 100%;
         padding-bottom:40px;
     }
