@@ -120,7 +120,7 @@ body, html {
     .game-panel {
         background: #806A00 url(../images/paper.jpg) center center repeat-y;
         width: 100%;
-        min-height: 500px;
+        min-height: 450px;
         margin-bottom:40px;
     }
    
