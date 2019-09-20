@@ -213,7 +213,7 @@ $(document).ready(function () {
     let showAnswerWindow = () => {
         //showing all the neccesary and hiding all the unnessesary
         $(".answer").remove();
-        $("#image_file").empty();
+        
         $("#questionDiv").hide();
         $("#rightAnswerDiv").show();
         $("#img_div").show();
@@ -256,7 +256,7 @@ $(document).ready(function () {
         //hiding buttons
         $(".restart-button").hide(); 
         $(".start-button").hide();
-
+        $("#image_file").attr("src", "#"); //reset image, otherwise it's going to show for half sec in the next window
         //if we have more questions 
         if (questionNumber < arrayOfQuestions.length) {
             if (questionSwitch === true) {
