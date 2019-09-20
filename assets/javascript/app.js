@@ -213,6 +213,7 @@ $(document).ready(function () {
     let showAnswerWindow = () => {
         //showing all the neccesary and hiding all the unnessesary
         $(".answer").remove();
+        $("#image_file").empty();
         $("#questionDiv").hide();
         $("#rightAnswerDiv").show();
         $("#img_div").show();
