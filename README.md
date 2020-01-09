@@ -23,7 +23,9 @@ If the player chooses the wrong answer, tell the player they selected the wrong 
 
 ---
 
-[Playable Demo](https://malinkamell.github.io/TriviaGame/)
+**[Playable Demo](https://malinkamell.github.io/TriviaGame/)**
+
+---
 
 **Optimized for 1920x1080 screen resolution and Google Chrome Version 77.0.3865.75**
 
