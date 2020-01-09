@@ -29,4 +29,4 @@ If the player chooses the wrong answer, tell the player they selected the wrong 
 
 **Optimized for 1920x1080 screen resolution and Google Chrome Version 77.0.3865.75**
 
-_Made for UOA Bootcamp, September 2019_
+_Made for UOA Bootcamp, Week-5, September 2019_
