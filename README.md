@@ -1,5 +1,7 @@
 # Harry Potter TriviaGame
 
+![Banner](assets/images/githubtpl.png)
+
 **How well do you know Harry Potter world?**
 
 From spells to ghosts, potions to professors, wands to witches, discover just how much you know about the beloved wizarding world!
@@ -19,6 +21,7 @@ If the player chooses the wrong answer, tell the player they selected the wrong 
 
 *   On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
 
+---
 
 [Playable Demo](https://malinkamell.github.io/TriviaGame/)
 

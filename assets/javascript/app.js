@@ -10,9 +10,9 @@ $(document).ready(function () {
     class questionObject {
         constructor(question, answerOptions, rightAnswer, imgFile) {
             this.question = question, //question
-            this.answerOptions = answerOptions, // this is going to be an array
-            this.rightAnswer = rightAnswer, // right answer
-            this.imgFile = imgFile // image
+                this.answerOptions = answerOptions, // this is going to be an array
+                this.rightAnswer = rightAnswer, // right answer
+                this.imgFile = imgFile // image
         }
     }
 
@@ -193,9 +193,9 @@ $(document).ready(function () {
     if I use this for an little array, like answers, which is only 4 it works fine, 
     but if I use it on bigger, like array of questions, it somethimes repeating the same element. 
     is there a better way to shuffle an array? */
-    
+
     function shuffle(array) {
-        array.sort(() => Math.random() - 0.5); 
+        array.sort(() => Math.random() - 0.5);
     }
 
     //---------Windows other than main game window------------//
@@ -213,7 +213,7 @@ $(document).ready(function () {
     let showAnswerWindow = () => {
         //showing all the neccesary and hiding all the unnessesary
         $(".answer").remove();
-        
+
         $("#questionDiv").hide();
         $("#rightAnswerDiv").show();
         $("#img_div").show();
@@ -254,7 +254,7 @@ $(document).ready(function () {
 
     let createGameInterface = () => {
         //hiding buttons
-        $(".restart-button").hide(); 
+        $(".restart-button").hide();
         $(".start-button").hide();
         $("#image_file").attr("src", "#"); //reset image, otherwise it's going to show for half sec in the next window
         //if we have more questions 
@@ -292,7 +292,7 @@ $(document).ready(function () {
 
         let rightAnswer = arrayOfQuestions[questionNumber].rightAnswer; // just because its too long
         //still don't feel very comfortable with "this", should ask TS to explain it to me again ^_^
-        if ($(this).text() === rightAnswer) { 
+        if ($(this).text() === rightAnswer) {
             timerStop();
             time = 0;
             $("#timer").text("");
@@ -324,7 +324,7 @@ $(document).ready(function () {
         questionNumber = 0;
         rightAnswers = 0;
         noAnswers = 0;
-        wrongAnswers = 0; 
+        wrongAnswers = 0;
         resetWindow();
 
     });
